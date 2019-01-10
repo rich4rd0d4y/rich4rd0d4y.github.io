@@ -5,15 +5,20 @@
   
 
   
-  <title>0d4y</title>
+  <title>2019-1-10 文件上传漏洞(一) | 0d4y</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="0d4y">
-<meta property="og:url" content="https://rich4rd0d4y.github.io/index.html">
+  <meta name="description" content="前置知识：web漏洞的产生原因 1.参数用户可控 2.后台执行参数  所有web漏洞无外乎这两点，用户提交了，后台执行了。  文件上传漏洞正是符合这两点定义： 1.用户提交一个webshell； 2.后台执行了webshell。 Ok，网站被拿下。   ###文件上传的方式： ####1.前端验证绕过方法：修改验证函数，在白名单中添加php删除调用接口，不调用函数浏览器功能，禁用js无视前端，直接">
+<meta name="keywords" content="web漏洞——文件上传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019-1-10 文件上传漏洞(一)">
+<meta property="og:url" content="https://rich4rd0d4y.github.io/2019/01/10/2019-1-10-文件上传漏洞-一/index.html">
 <meta property="og:site_name" content="0d4y">
+<meta property="og:description" content="前置知识：web漏洞的产生原因 1.参数用户可控 2.后台执行参数  所有web漏洞无外乎这两点，用户提交了，后台执行了。  文件上传漏洞正是符合这两点定义： 1.用户提交一个webshell； 2.后台执行了webshell。 Ok，网站被拿下。   ###文件上传的方式： ####1.前端验证绕过方法：修改验证函数，在白名单中添加php删除调用接口，不调用函数浏览器功能，禁用js无视前端，直接">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-10T15:21:42.236Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="0d4y">
+<meta name="twitter:title" content="2019-1-10 文件上传漏洞(一)">
+<meta name="twitter:description" content="前置知识：web漏洞的产生原因 1.参数用户可控 2.后台执行参数  所有web漏洞无外乎这两点，用户提交了，后台执行了。  文件上传漏洞正是符合这两点定义： 1.用户提交一个webshell； 2.后台执行了webshell。 Ok，网站被拿下。   ###文件上传的方式： ####1.前端验证绕过方法：修改验证函数，在白名单中添加php删除调用接口，不调用函数浏览器功能，禁用js无视前端，直接">
   
     <link rel="alternate" href="/atom.xml" title="0d4y" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-2019-1-10-文件上传漏洞-一" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2019-1-10-文件上传漏洞-一" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/10/2019-1-10-文件上传漏洞-一/" class="article-date">
   <time datetime="2019-01-10T15:03:16.000Z" itemprop="datePublished">2019-01-10</time>
@@ -75,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/2019-1-10-文件上传漏洞-一/">2019-1-10 文件上传漏洞(一)</a>
+    <h1 class="article-title" itemprop="name">
+      2019-1-10 文件上传漏洞(一)
     </h1>
   
 
@@ -129,50 +132,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-about-me" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/10/about-me/" class="article-date">
-  <time datetime="2019-01-10T14:58:35.000Z" itemprop="datePublished">2019-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/about-me/">about me</a>
-    </h1>
+    <a href="/2019/01/10/about-me/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">about me</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>某不知名大学的信息安全专业科班出身，现在网络安全一线工作的90后<br>mailto:<a href="mailto:rich4rd0d4y@163.com" target="_blank" rel="noopener">rich4rd0d4y@163.com</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://rich4rd0d4y.github.io/2019/01/10/about-me/" data-id="cjqqrgufs0001rmphre7wggmo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/about-me/">about me</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         

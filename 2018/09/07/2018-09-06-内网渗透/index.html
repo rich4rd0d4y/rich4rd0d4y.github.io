@@ -5,15 +5,20 @@
   
 
   
-  <title>0d4y</title>
+  <title>内网渗透 | 0d4y</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="0d4y">
-<meta property="og:url" content="https://rich4rd0d4y.github.io/index.html">
+  <meta name="description" content="内网渗透1、信息收集开源情报收集(OSINT) github github_Nuggests(自动爬取Github上敏感信息、文件泄露) GSIL(能够实现近实时(15分钟内)的发现Github上泄露的信息) https://github.com/MiSecurity/x-patrol   whois查寻/注册人反查/邮箱反查/相关资产 站长之家 爱站 微步在线 IP反查 天眼查 虎妈查 历史漏洞">
+<meta name="keywords" content="内网渗透">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内网渗透">
+<meta property="og:url" content="https://rich4rd0d4y.github.io/2018/09/07/2018-09-06-内网渗透/index.html">
 <meta property="og:site_name" content="0d4y">
+<meta property="og:description" content="内网渗透1、信息收集开源情报收集(OSINT) github github_Nuggests(自动爬取Github上敏感信息、文件泄露) GSIL(能够实现近实时(15分钟内)的发现Github上泄露的信息) https://github.com/MiSecurity/x-patrol   whois查寻/注册人反查/邮箱反查/相关资产 站长之家 爱站 微步在线 IP反查 天眼查 虎妈查 历史漏洞">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-21T10:31:12.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="0d4y">
+<meta name="twitter:title" content="内网渗透">
+<meta name="twitter:description" content="内网渗透1、信息收集开源情报收集(OSINT) github github_Nuggests(自动爬取Github上敏感信息、文件泄露) GSIL(能够实现近实时(15分钟内)的发现Github上泄露的信息) https://github.com/MiSecurity/x-patrol   whois查寻/注册人反查/邮箱反查/相关资产 站长之家 爱站 微步在线 IP反查 天眼查 虎妈查 历史漏洞">
   
     <link rel="alternate" href="/atom.xml" title="0d4y" type="application/atom+xml">
   
@@ -60,119 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-2019-1-10-文件上传漏洞-一" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/10/2019-1-10-文件上传漏洞-一/" class="article-date">
-  <time datetime="2019-01-10T15:03:16.000Z" itemprop="datePublished">2019-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/2019-1-10-文件上传漏洞-一/">2019-1-10 文件上传漏洞(一)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前置知识：web漏洞的产生原因"><a href="#前置知识：web漏洞的产生原因" class="headerlink" title="前置知识：web漏洞的产生原因"></a>前置知识：web漏洞的产生原因</h3><ul>
-<li>1.参数用户可控</li>
-<li>2.后台执行参数</li>
-</ul>
-<p>所有web漏洞无外乎这两点，用户提交了，后台执行了。</p>
-<ul>
-<li>文件上传漏洞正是符合这两点定义：</li>
-<li>1.用户提交一个webshell；</li>
-<li>2.后台执行了webshell。</li>
-<li>Ok，网站被拿下。</li>
-</ul>
-<hr>
-<p>###文件上传的方式：</p>
-<p>####<strong><em>1.前端验证绕过方法：</em></strong><br>修改验证函数，在白名单中添加php<br>删除调用接口，不调用函数<br>浏览器功能，禁用js<br>无视前端，直接抓包绕过</p>
-<p>####<strong><em>2.MIME（用于确认请求包中文件类型与后缀名之间的关系）</em></strong><br>抓包，修改<code>Content-Type</code>字段</p>
-<p>####<strong><em>3.后缀黑名单绕过：</em></strong><br>找黑名单中过滤不严谨</p>
-<p>####<strong><em>4.htaccess(仅在apache中可用)</em></strong><br><code>AddType application/x-httpd-php .jpg</code></p>
-<p>原理：<br>临时改变上传路径文件夹的解析规则，将所有的jpg后缀的文件以php的方式解析</p>
-<p>####<strong><em>5.没有对后缀名大小写进行严格验证</em></strong><br>导致黑名单出现逻辑漏洞</p>
-<p>####<strong><em>6.文件后缀名后添加空格导致绕过过滤规则</em></strong><br>上传文件名：<code>webshell.php(空格)</code></p>
-<p>####<strong><em>7.利用windows系统文件名末尾不允许有点</em></strong><br>上传文件名：<code>webshell.php.</code></p>
-<p>####<strong><em>8.NTFS文件流</em></strong></p>
-<blockquote>
-<p>#####<code>::$DATA</code></p>
-<p>#####利用ntfs文件流的特性<br><code>::$DATA</code>传输数据，将数据写入<code>::$DATA</code>之前的文件名中</p>
-</blockquote>
-<p>拓展：NTFS文件流之寄生文件</p>
-<p>####<strong><em>9. “.空格.”绕过删除末尾的点且不改名的上传</em></strong></p>
-<p>####<strong><em>10.str_replace函数过滤绕过</em></strong></p>
-<blockquote>
-<p><code>str_replace()</code></p><p><br><code>str_ireplace()</code></p><p><br>区别:str_ireplace大小写敏感</p>
-</blockquote>
-<p>绕过方式：php双写绕过</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://rich4rd0d4y.github.io/2019/01/10/2019-1-10-文件上传漏洞-一/" data-id="cjsbgjm8r0000iuphhmhyt98e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web漏洞——文件上传/">web漏洞——文件上传</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-about-me" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/10/about-me/" class="article-date">
-  <time datetime="2019-01-10T14:58:35.000Z" itemprop="datePublished">2019-01-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/about-me/">about me</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>某不知名大学的信息安全专业科班出身，现在网络安全一线工作的90后<br>mailto:<a href="mailto:rich4rd0d4y@163.com" target="_blank" rel="noopener">rich4rd0d4y@163.com</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://rich4rd0d4y.github.io/2019/01/10/about-me/" data-id="cjsbgjm8y0001iuphoz3vw7v5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/about-me/">about me</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2018-09-06-内网渗透" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-2018-09-06-内网渗透" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/07/2018-09-06-内网渗透/" class="article-date">
   <time datetime="2018-09-07T09:14:54.000Z" itemprop="datePublished">2018-09-07</time>
@@ -189,8 +82,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/07/2018-09-06-内网渗透/">内网渗透</a>
+    <h1 class="article-title" itemprop="name">
+      内网渗透
     </h1>
   
 
@@ -1490,11 +1383,23 @@ wevtutil cl "windows powershell"
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/10/about-me/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          about me
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
-
+</article>
 
 </section>
         
